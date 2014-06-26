@@ -1,4 +1,4 @@
 RBTreeAndMap
 ============
 
-C++ version, based on linux kernel implementation.
+C++ 11 version, based on linux kernel implementation.

@@ -85,7 +85,7 @@ void TestMap() {
     map.Insert(252, 252);
     map.Insert(33, 33);
     map.Insert(3342, 3342);
-    map.Insert(-9, 202);
+    map.Insert(-9, -9);
 
     PrintMap(map);
 
@@ -104,5 +104,5 @@ int main() {
     TestRBTree();
     TestMap();
 
-	return 0;
+    return 0;
 }
