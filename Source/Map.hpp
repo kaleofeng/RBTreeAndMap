@@ -18,15 +18,15 @@ class Map {
     using Key_t = KeyType;
     using Value_t = ValueType;
     using Compare_t = CompareType;
-    using Data_t = Pair < Key_t, Value_t > ;
-    using DataCompare_t = PairCompare < Data_t, Compare_t > ;
-    using Node_t = RBTreeNode < Data_t > ;
-    using Tree_t = RBTree < Node_t, DataCompare_t > ;
-    using Allocator_t = typename AllocatorFamily::template Rebind < sizeof(Node_t) > ;
+    using Data_t = Pair<Key_t, Value_t>;
+    using DataCompare_t = PairCompare<Data_t, Compare_t>;
+    using Node_t = RBTreeNode<Data_t>;
+    using Tree_t = RBTree <Node_t, DataCompare_t>;
+    using Allocator_t = typename AllocatorFamily::template Rebind<sizeof(Node_t)>;
 
 public:
-    using Iterator_t = MapIterator < Node_t > ;
-    using ConstIterator_t = MapConstIterator < Node_t > ;
+    using Iterator_t = MapIterator<Node_t> ;
+    using ConstIterator_t = MapConstIterator<Node_t>;
 
 public:
     Map() { m_allocator.Initialize(); }

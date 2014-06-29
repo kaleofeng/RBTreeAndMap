@@ -86,11 +86,12 @@ struct RBTreeNode {
 };
 
 template<typename NodeType
-    , typename CompareType>
+, typename CompareType
+>
 class RBTree {
     DISALLOW_COPY_AND_ASSIGN(RBTree)
 
-        using Node_t = NodeType;
+    using Node_t = NodeType;
     using Compare_t = CompareType;
     using Value_t = typename Node_t::Value_t;
 
