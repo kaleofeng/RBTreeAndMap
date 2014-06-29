@@ -44,9 +44,9 @@ void TestRBTree() {
     c.m_value = 2;
 
     RBTree<DataNode_t, Compare_t> rbTree;
-    rbTree.Insert(&a);
-    rbTree.Insert(&b);
-    rbTree.Insert(&c);
+    rbTree.InsertUnique(&a);
+    rbTree.InsertUnique(&b);
+    rbTree.InsertUnique(&c);
 
     PrintRBTree(rbTree);
 

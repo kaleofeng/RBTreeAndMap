@@ -14,19 +14,19 @@ template<typename KeyType
 >
 class Map {
     DISALLOW_COPY_AND_ASSIGN(Map)
-    
+
     using Key_t = KeyType;
     using Value_t = ValueType;
     using Compare_t = CompareType;
-    using Data_t = Pair<Key_t, Value_t>;
-    using DataCompare_t = PairCompare<Data_t, Compare_t>;
-    using Node_t = RBTreeNode<Data_t>;
-    using Tree_t = RBTree<Node_t, DataCompare_t>;
-    using Allocator_t = typename AllocatorFamily::template Rebind<sizeof(Node_t)>;
+    using Data_t = Pair < Key_t, Value_t > ;
+    using DataCompare_t = PairCompare < Data_t, Compare_t > ;
+    using Node_t = RBTreeNode < Data_t > ;
+    using Tree_t = RBTree < Node_t, DataCompare_t > ;
+    using Allocator_t = typename AllocatorFamily::template Rebind < sizeof(Node_t) > ;
 
 public:
-    using Iterator_t = MapIterator<Node_t>;
-    using ConstIterator_t = MapConstIterator<Node_t>;
+    using Iterator_t = MapIterator < Node_t > ;
+    using ConstIterator_t = MapConstIterator < Node_t > ;
 
 public:
     Map() { m_allocator.Initialize(); }
@@ -73,8 +73,12 @@ public:
         ASSERT_TRUE(!IsNull(node));
         node->m_value.first = key;
         node->m_value.second = value;
-        m_tree.Insert(node);
-        return Iterator_t(node);
+        const auto ret = m_tree.InsertUnique(node);
+        if (IsNull(ret)) {
+            DestoryNode(node);
+        }
+
+        return Iterator_t(ret);
     }
 
     void Erase(Iterator_t iter) {
@@ -101,7 +105,7 @@ public:
 private:
     Node_t* CreateNode() {
         auto memory = m_allocator.Alloc();
-        auto node = new(memory) Node_t();
+        auto node = new(memory)Node_t();
         return node;
     }
 
