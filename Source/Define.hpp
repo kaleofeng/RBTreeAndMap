@@ -28,7 +28,8 @@ inline bool IsNull(const T* const ptr) {
     return nullptr == ptr;
 }
 
-template<typename T> inline bool IsNull(const T& val) {
+template<typename T>
+inline bool IsNull(const T& val) {
     return nullptr == val;
 }
 

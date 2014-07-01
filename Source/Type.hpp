@@ -31,7 +31,8 @@ struct Pair {
 };
 
 template<typename PairType
-, typename CompareType>
+, typename CompareType
+>
 struct PairCompare {
     using Pair_t = PairType;
     using Compare_t = CompareType;

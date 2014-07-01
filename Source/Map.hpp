@@ -21,7 +21,7 @@ class Map {
     using Data_t = Pair<Key_t, Value_t>;
     using DataCompare_t = PairCompare<Data_t, Compare_t>;
     using Node_t = RBTreeNode<Data_t>;
-    using Tree_t = RBTree <Node_t, DataCompare_t>;
+    using Tree_t = RBTree<Node_t, DataCompare_t>;
     using Allocator_t = typename AllocatorFamily::template Rebind<sizeof(Node_t)>;
 
 public:
